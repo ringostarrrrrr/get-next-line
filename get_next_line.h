@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: naokifuse <naokifuse@student.42.fr>        +#+  +:+       +#+        */
+/*   By: naoki <naoki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 21:14:38 by naokifuse         #+#    #+#             */
-/*   Updated: 2022/12/21 11:46:55 by naokifuse        ###   ########.fr       */
+/*   Updated: 2022/12/21 14:47:05 by naoki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
