@@ -6,7 +6,7 @@
 /*   By: naokifuse <naokifuse@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 21:14:26 by naokifuse         #+#    #+#             */
-/*   Updated: 2022/12/18 21:34:17 by naokifuse        ###   ########.fr       */
+/*   Updated: 2022/12/21 11:46:34 by naokifuse        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ char	*get_line(char *about_line)
 	size_t	i;
 
 	i = 0;
-	if (!about_line)
+	if (!about_line[i])
 		return (NULL);
 	while (about_line[i] && about_line[i] != '\n')
 		i++;
-	line = (char *)malloc((i + 1) * sizeof(char));
+	line = (char *)malloc((i + 2) * sizeof(char));
 	if (!line)
 		return (NULL);
 	i = 0;
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 {
 	static char	*about_line;
 	char		*line;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	about_line = get_about_line(fd, about_line);

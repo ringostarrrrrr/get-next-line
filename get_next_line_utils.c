@@ -6,19 +6,19 @@
 /*   By: naokifuse <naokifuse@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 21:14:33 by naokifuse         #+#    #+#             */
-/*   Updated: 2022/12/18 19:11:09 by naokifuse        ###   ########.fr       */
+/*   Updated: 2022/12/21 11:46:41 by naokifuse        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
-	if (!s)
-		return (NULL);
 	size_t	i;
 	size_t	s_len;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	s_len = ft_strlen(s) + 1;
 	while (i < s_len)
@@ -30,7 +30,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
@@ -40,7 +40,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup(char *s)
 {
 	char	*ptr;
 	size_t	s_len;
@@ -60,7 +60,7 @@ char	*ft_strdup(const char *s)
 	return (ptr);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
 {
 	size_t	i;
 
@@ -79,22 +79,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 }
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
-{
-	size_t	dst_len;
-	size_t	src_len;
-
-	src_len = ft_strlen(src);
-	if (dstsize == 0)
-		return (src_len);
-	dst_len = ft_strlen(dst);
-	if (dstsize <= dst_len)
-		return (dstsize + src_len);
-	ft_strlcpy(dst + dst_len, src, dstsize - dst_len);
-	return (dst_len + src_len);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	s1_len;
 	size_t	s2_len;
@@ -112,6 +97,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!ptr)
 		return (NULL);
 	ft_strlcpy(ptr, s1, s1_len + 1);
-	ft_strlcat(ptr, s2, s2_len + ft_strlen(ptr) + 1);
+	ft_strlcpy(ptr + s1_len, s2, s2_len + 1);
+	free(s1);
 	return (ptr);
 }
